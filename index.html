@@ -1,1847 +1,2075 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meghana G | Future Software Engineer</title>
-  <meta name="description" content="Portfolio of Meghana G, a First-Year B.Tech Computer Science student specializing in Python, C, and modern web development.">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ----------------------------------------------------
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meghana G | Future Software Engineer</title>
+    <meta name="description"
+        content="Portfolio of Meghana G, a First-Year B.Tech Computer Science student specializing in Python, C, and modern web development.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ----------------------------------------------------
        1. CSS Variables & Theme Setup
        ---------------------------------------------------- */
-    :root {
-      --bg-dark: #030712;
-      --bg-surface: rgba(15, 23, 42, 0.45);
-      --bg-surface-hover: rgba(15, 23, 42, 0.65);
-      --accent-blue: #3b82f6;
-      --accent-cyan: #00f0ff;
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-border-hover: rgba(0, 240, 255, 0.3);
-      --glow-color: rgba(0, 240, 255, 0.15);
-      --font-headings: 'Outfit', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+        :root {
+            --bg-dark: #030712;
+            --bg-surface: rgba(15, 23, 42, 0.45);
+            --bg-surface-hover: rgba(15, 23, 42, 0.65);
+            --accent-blue: #3b82f6;
+            --accent-cyan: #00f0ff;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-hover: rgba(0, 240, 255, 0.3);
+            --glow-color: rgba(0, 240, 255, 0.15);
+            --font-headings: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        2. Global Reset & Scrollbars
        ---------------------------------------------------- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--bg-dark);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      overflow-x: hidden;
-    }
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
 
-    body {
-      min-height: 100vh;
-      position: relative;
-    }
+        body {
+            min-height: 100vh;
+            position: relative;
+        }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-dark);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-cyan);
-    }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
 
-    button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
 
-    /* ----------------------------------------------------
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* ----------------------------------------------------
        3. Interactive Background Canvas
        ---------------------------------------------------- */
-    #particle-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
-    }
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-    .ambient-glow-1 {
-      position: fixed;
-      top: -10%;
-      left: -10%;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 70%);
-      pointer-events: none;
-      z-index: -2;
-    }
+        .ambient-glow-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: -2;
+        }
 
-    .ambient-glow-2 {
-      position: fixed;
-      bottom: -10%;
-      right: -10%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, rgba(0,0,0,0) 70%);
-      pointer-events: none;
-      z-index: -2;
-    }
+        .ambient-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: -2;
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        4. Navigation Styles
        ---------------------------------------------------- */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 1.25rem 2rem;
-      display: flex;
-      justify-content: center;
-      transition: var(--transition-smooth);
-    }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
 
-    .nav-container {
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(15, 23, 42, 0.5);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      padding: 0.75rem 2rem;
-      border-radius: 50px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    }
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
 
-    .logo {
-      font-family: var(--font-headings);
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        .logo {
+            font-family: var(--font-headings);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .logo-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent-cyan);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-cyan);
-      animation: pulse 2s infinite;
-    }
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-cyan);
+            animation: pulse 2s infinite;
+        }
 
-    .nav-menu {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      align-items: center;
-    }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
 
-    .nav-link {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      transition: var(--transition-smooth);
-      position: relative;
-      padding: 0.25rem 0;
-    }
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.25rem 0;
+        }
 
-    .nav-link:hover, .nav-link.active {
-      color: var(--text-primary);
-    }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-primary);
+        }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background-color: var(--accent-cyan);
-      box-shadow: 0 0 8px var(--accent-cyan);
-      transition: var(--transition-smooth);
-      transform: translateX(-50%);
-    }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+            transition: var(--transition-smooth);
+            transform: translateX(-50%);
+        }
 
-    .nav-link:hover::after, .nav-link.active::after {
-      width: 80%;
-    }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
 
-    .nav-cta {
-      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 0.6rem 1.25rem;
-      border-radius: 30px;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-      transition: var(--transition-spring);
-    }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1.25rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: var(--transition-spring);
+        }
 
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
-    }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
+        }
 
-    /* Mobile Hamburger Trigger */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-    }
+        /* Mobile Hamburger Trigger */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
 
-    .nav-toggle span {
-      width: 25px;
-      height: 2px;
-      background-color: var(--text-primary);
-      transition: var(--transition-smooth);
-    }
+        .nav-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition-smooth);
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        5. Hero Section
        ---------------------------------------------------- */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 6rem 2rem 2rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-    }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-    .hero-badge {
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      color: var(--accent-cyan);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 0.5rem 1.25rem;
-      border-radius: 50px;
-      margin-bottom: 2rem;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+        .hero-badge {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .hero-title {
-      font-family: var(--font-headings);
-      font-size: 4rem;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(to right, #ffffff, #94a3b8, var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .hero-title {
+            font-family: var(--font-headings);
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .hero-subtitle {
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin-bottom: 2.5rem;
-      line-height: 1.5;
-    }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
 
-    .hero-cta-group {
-      display: flex;
-      gap: 1.25rem;
-      align-items: center;
-    }
+        .hero-cta-group {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+        }
 
-    .btn {
-      padding: 0.85rem 2rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: var(--transition-spring);
-      position: relative;
-      overflow: hidden;
-    }
+        .btn {
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition-spring);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-      color: #ffffff;
-      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.25);
-    }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+            color: #ffffff;
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.25);
+        }
 
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(0, 240, 255, 0.35);
-    }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 240, 255, 0.35);
+        }
 
-    .btn-secondary {
-      background: var(--bg-surface);
-      border: 1px solid var(--glass-border);
-      color: var(--text-primary);
-      backdrop-filter: blur(10px);
-    }
+        .btn-secondary {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+        }
 
-    .btn-secondary:hover {
-      background: var(--bg-surface-hover);
-      border-color: var(--accent-cyan);
-      color: var(--accent-cyan);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 240, 255, 0.15);
-    }
+        .btn-secondary:hover {
+            background: var(--bg-surface-hover);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.15);
+        }
 
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      animation: bounce 2s infinite;
-    }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
 
-    .scroll-indicator svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--text-muted);
-    }
+        .scroll-indicator svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text-muted);
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        6. Main Content Section (Bento Grid Container)
        ---------------------------------------------------- */
-    .content-section {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-    }
+        .content-section {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
 
-    .section-header {
-      margin-bottom: 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+        .section-header {
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
-    .section-tag {
-      color: var(--accent-cyan);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+        .section-tag {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
-    .section-title {
-      font-family: var(--font-headings);
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -1px;
-    }
+        .section-title {
+            font-family: var(--font-headings);
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
 
-    /* Bento Grid Layout Configuration */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: minmax(180px, auto);
-      gap: 1.5rem;
-    }
+        /* Bento Grid Layout Configuration */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 1.5rem;
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        7. Glassmorphic Bento Cards Styling
        ---------------------------------------------------- */
-    .bento-card {
-      position: relative;
-      background: var(--bg-surface);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 2.25rem;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      transition: var(--transition-smooth);
-    }
+        .bento-card {
+            position: relative;
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.25rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+        }
 
-    /* Glowing Hover Effect Layer */
-    .bento-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 20px;
-      background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 240, 255, 0.08), transparent 50%);
-      z-index: 2;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+        /* Glowing Hover Effect Layer */
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            background: radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 240, 255, 0.08), transparent 50%);
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
 
-    .bento-card:hover::before {
-      opacity: 1;
-    }
+        .bento-card:hover::before {
+            opacity: 1;
+        }
 
-    .bento-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--glass-border-hover);
-      box-shadow: 0 12px 40px var(--glow-color);
-    }
+        .bento-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 12px 40px var(--glow-color);
+        }
 
-    /* Grid Layout Assignments (Desktop) */
-    .card-about {
-      grid-column: span 7;
-      grid-row: span 2;
-    }
+        /* Grid Layout Assignments (Desktop) */
+        .card-about {
+            grid-column: span 7;
+            grid-row: span 2;
+        }
 
-    .card-skills {
-      grid-column: span 5;
-      grid-row: span 2;
-    }
+        .card-skills {
+            grid-column: span 5;
+            grid-row: span 2;
+        }
 
-    .card-github {
-      grid-column: span 4;
-      grid-row: span 1;
-    }
+        .card-github {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
 
-    .card-project {
-      grid-column: span 8;
-      grid-row: span 2;
-    }
+        .card-project {
+            grid-column: span 8;
+            grid-row: span 2;
+        }
 
-    .card-education {
-      grid-column: span 6;
-      grid-row: span 1;
-    }
+        .card-education {
+            grid-column: span 6;
+            grid-row: span 1;
+        }
 
-    .card-interests {
-      grid-column: span 6;
-      grid-row: span 1;
-    }
+        .card-interests {
+            grid-column: span 6;
+            grid-row: span 1;
+        }
 
-    /* Bento Card Content Components */
-    .card-header-icon {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
+        /* Bento Card Content Components */
+        .card-header-icon {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
 
-    .icon-wrapper {
-      width: 48px;
-      height: 48px;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-cyan);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
 
-    .icon-wrapper svg {
-      width: 24px;
-      height: 24px;
-    }
+        .icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+        }
 
-    .card-tag {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-    .card-title {
-      font-family: var(--font-headings);
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
+        .card-title {
+            font-family: var(--font-headings);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-    .card-text {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
+        .card-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        8. Component-Specific Styling Within Cards
        ---------------------------------------------------- */
 
-    /* About Card styling */
-    .about-bio {
-      margin-bottom: 2rem;
-    }
-    .about-highlights {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    .highlight-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .highlight-num {
-      font-family: var(--font-headings);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      line-height: 1;
-    }
-    .highlight-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        /* About Card styling */
+        .about-bio {
+            margin-bottom: 2rem;
+        }
 
-    /* Skills Card styling */
-    .skills-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      justify-content: center;
-      height: 100%;
-    }
-    .skill-category-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-    .skills-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-    .skill-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--glass-border);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-    .skill-pill:hover {
-      background: rgba(0, 240, 255, 0.08);
-      border-color: var(--accent-cyan);
-      color: var(--text-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 240, 255, 0.15);
-    }
-    .skill-icon {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
 
-    /* GitHub Card styling */
-    .github-profile {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-    .github-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
-      padding: 2px;
-    }
-    .github-avatar-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--bg-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .github-avatar-inner svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--text-primary);
-    }
-    .github-meta {
-      display: flex;
-      flex-direction: column;
-    }
-    .github-handle {
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .github-badge {
-      font-size: 0.75rem;
-      color: var(--accent-cyan);
-    }
-    
-    /* Mock Github Activity Heatmap Grid */
-    .github-grid-wrapper {
-      margin-bottom: 1.5rem;
-    }
-    .github-grid-title {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-    }
-    .github-grid {
-      display: grid;
-      grid-template-columns: repeat(20, 1fr);
-      gap: 3px;
-    }
-    .github-cell {
-      aspect-ratio: 1;
-      border-radius: 2px;
-      background-color: rgba(255, 255, 255, 0.05);
-      animation: cellPulse 4s infinite ease-in-out;
-    }
-    .github-cell.lvl-1 { background-color: #0e4429; }
-    .github-cell.lvl-2 { background-color: #006d32; }
-    .github-cell.lvl-3 { background-color: #26a641; }
-    .github-cell.lvl-4 { background-color: #39d353; }
-    
-    .card-footer-action {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    .btn-github-link {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--glass-border);
-      padding: 0.5rem 1.25rem;
-      border-radius: 10px;
-      color: var(--text-primary);
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-    .btn-github-link:hover {
-      background: var(--text-primary);
-      color: var(--bg-dark);
-      border-color: var(--text-primary);
-    }
-    .btn-github-link svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
+        .highlight-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
 
-    /* Featured Project Card styling */
-    .project-card-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      height: 100%;
-    }
-    .project-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
-    .project-tags {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .project-tag {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
-      background: rgba(0, 240, 255, 0.05);
-      border: 1px solid rgba(0, 240, 255, 0.1);
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-    }
-    .project-techs {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .project-tech-item {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .project-tech-item span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent-blue);
-    }
-    .project-actions {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-    }
-    .project-visual {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(0, 240, 255, 0.05) 100%);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .project-mock-window {
-      width: 90%;
-      height: 85%;
-      background: rgba(3, 7, 18, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .mock-window-header {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 0.5rem 0.75rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      display: flex;
-      gap: 4px;
-      align-items: center;
-    }
-    .mock-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-    }
-    .mock-dot.red { background-color: #ef4444; }
-    .mock-dot.yellow { background-color: #f59e0b; }
-    .mock-dot.green { background-color: #10b981; }
-    .mock-window-body {
-      flex: 1;
-      padding: 1rem;
-      font-family: monospace;
-      font-size: 0.75rem;
-      color: #38bdf8;
-      overflow: hidden;
-      line-height: 1.4;
-    }
-    .mock-code-line {
-      display: flex;
-      gap: 1rem;
-    }
-    .mock-line-num {
-      color: var(--text-muted);
-      user-select: none;
-      text-align: right;
-      width: 15px;
-    }
+        .highlight-num {
+            font-family: var(--font-headings);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            line-height: 1;
+        }
 
-    /* Coursework Grid Details */
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      width: 100%;
-      margin-top: 1.5rem;
-    }
-    .course-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--glass-border);
-      padding: 1rem;
-      border-radius: 12px;
-      transition: var(--transition-smooth);
-    }
-    .course-card:hover {
-      border-color: rgba(59, 130, 246, 0.3);
-      background: rgba(59, 130, 246, 0.03);
-    }
-    .course-code {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
-      margin-bottom: 0.25rem;
-    }
-    .course-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
+        .highlight-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    /* Interests/Achievements Card styling */
-    .interests-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      width: 100%;
-      margin-top: 1.5rem;
-    }
-    .interest-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--glass-border);
-      padding: 0.85rem;
-      border-radius: 12px;
-      transition: var(--transition-smooth);
-    }
-    .interest-item:hover {
-      border-color: rgba(0, 240, 255, 0.2);
-      background: rgba(0, 240, 255, 0.02);
-    }
-    .interest-icon {
-      color: var(--accent-cyan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .interest-icon svg {
-      width: 20px;
-      height: 20px;
-    }
-    .interest-label {
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
+        /* Skills Card styling */
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            justify-content: center;
+            height: 100%;
+        }
 
-    /* ----------------------------------------------------
+        .skill-category-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .skill-pill:hover {
+            background: rgba(0, 240, 255, 0.08);
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 240, 255, 0.15);
+        }
+
+        .skill-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* GitHub Card styling */
+        .github-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .github-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+            padding: 2px;
+        }
+
+        .github-avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .github-avatar-inner svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-primary);
+        }
+
+        .github-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .github-handle {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .github-badge {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+        }
+
+        /* Mock Github Activity Heatmap Grid */
+        .github-grid-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .github-grid-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .github-grid {
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            gap: 3px;
+        }
+
+        .github-cell {
+            aspect-ratio: 1;
+            border-radius: 2px;
+            background-color: rgba(255, 255, 255, 0.05);
+            animation: cellPulse 4s infinite ease-in-out;
+        }
+
+        .github-cell.lvl-1 {
+            background-color: #0e4429;
+        }
+
+        .github-cell.lvl-2 {
+            background-color: #006d32;
+        }
+
+        .github-cell.lvl-3 {
+            background-color: #26a641;
+        }
+
+        .github-cell.lvl-4 {
+            background-color: #39d353;
+        }
+
+        .card-footer-action {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .btn-github-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.25rem;
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-github-link:hover {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border-color: var(--text-primary);
+        }
+
+        .btn-github-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Featured Project Card styling */
+        .project-card-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            height: 100%;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+        }
+
+        .project-techs {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .project-tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .project-tech-item span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+
+        .project-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-visual {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(0, 240, 255, 0.05) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-mock-window {
+            width: 90%;
+            height: 85%;
+            background: rgba(3, 7, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mock-window-header {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .mock-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .mock-dot.red {
+            background-color: #ef4444;
+        }
+
+        .mock-dot.yellow {
+            background-color: #f59e0b;
+        }
+
+        .mock-dot.green {
+            background-color: #10b981;
+        }
+
+        .mock-window-body {
+            flex: 1;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #38bdf8;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .mock-code-line {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .mock-line-num {
+            color: var(--text-muted);
+            user-select: none;
+            text-align: right;
+            width: 15px;
+        }
+
+        /* Coursework Grid Details */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+        }
+
+        .course-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.03);
+        }
+
+        .course-code {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 0.25rem;
+        }
+
+        .course-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Interests/Achievements Card styling */
+        .interests-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .interest-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 0.85rem;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+        }
+
+        .interest-item:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            background: rgba(0, 240, 255, 0.02);
+        }
+
+        .interest-icon {
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .interest-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .interest-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ----------------------------------------------------
        9. Contact Footer Section
        ---------------------------------------------------- */
-    footer {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(3, 7, 18, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 5rem 2rem 3rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
+        footer {
+            border-top: 1px solid var(--glass-border);
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 5rem 2rem 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-bottom: 4rem;
-    }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
 
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
 
-    .footer-logo {
-      font-family: var(--font-headings);
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        .footer-logo {
+            font-family: var(--font-headings);
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .footer-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      max-width: 400px;
-      line-height: 1.6;
-    }
+        .footer-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 400px;
+            line-height: 1.6;
+        }
 
-    .footer-connect {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
+        .footer-connect {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
 
-    .email-container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+        .email-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-    .email-btn {
-      background: var(--bg-surface);
-      border: 1px solid var(--glass-border);
-      padding: 0.85rem 1.5rem;
-      border-radius: 12px;
-      color: var(--text-primary);
-      font-weight: 500;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
+        .email-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            padding: 0.85rem 1.5rem;
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
 
-    .email-btn:hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 4px 15px rgba(0, 240, 255, 0.15);
-      background: var(--bg-surface-hover);
-    }
+        .email-btn:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.15);
+            background: var(--bg-surface-hover);
+        }
 
-    .email-copy-icon {
-      color: var(--accent-cyan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-smooth);
-    }
+        .email-copy-icon {
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
 
-    .email-btn:active .email-copy-icon {
-      transform: scale(0.85);
-    }
+        .email-btn:active .email-copy-icon {
+            transform: scale(0.85);
+        }
 
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
 
-    .social-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--bg-surface);
-      border: 1px solid var(--glass-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-secondary);
-      transition: var(--transition-spring);
-    }
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition-spring);
+        }
 
-    .social-btn:hover {
-      color: var(--accent-cyan);
-      border-color: var(--accent-cyan);
-      transform: translateY(-3px);
-      background: var(--bg-surface-hover);
-      box-shadow: 0 6px 15px rgba(0, 240, 255, 0.2);
-    }
+        .social-btn:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+            background: var(--bg-surface-hover);
+            box-shadow: 0 6px 15px rgba(0, 240, 255, 0.2);
+        }
 
-    .social-btn svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
 
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 2rem;
-    }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem;
+        }
 
-    .footer-bottom-links {
-      display: flex;
-      gap: 1.5rem;
-    }
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
 
-    .footer-bottom-link:hover {
-      color: var(--text-primary);
-    }
+        .footer-bottom-link:hover {
+            color: var(--text-primary);
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        10. Notification Toast Component
        ---------------------------------------------------- */
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid var(--accent-cyan);
-      border-radius: 10px;
-      padding: 0.75rem 1.5rem;
-      color: var(--text-primary);
-      font-weight: 500;
-      font-size: 0.9rem;
-      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
-      transform: translateY(150%);
-      opacity: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 10px;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
+            transform: translateY(150%);
+            opacity: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
-    .toast-icon {
-      color: var(--accent-cyan);
-      display: flex;
-      align-items: center;
-    }
+        .toast-icon {
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+        }
 
-    .toast-icon svg {
-      width: 16px;
-      height: 16px;
-    }
+        .toast-icon svg {
+            width: 16px;
+            height: 16px;
+        }
 
-    /* ----------------------------------------------------
+        /* ----------------------------------------------------
        11. Scroll Animations & Effects
        ---------------------------------------------------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* Delay helpers for reveal */
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
+        /* Delay helpers for reveal */
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
 
-    /* Keyframes */
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 8px var(--accent-cyan);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.25);
-        box-shadow: 0 0 16px var(--accent-cyan);
-        opacity: 0.7;
-      }
-    }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
 
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translate(-50%, 0);
-      }
-      40% {
-        transform: translate(-50%, -8px);
-      }
-      60% {
-        transform: translate(-50%, -4px);
-      }
-    }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
 
-    @keyframes cellPulse {
-      0%, 100% { opacity: 0.95; }
-      50% { opacity: 0.45; }
-    }
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
 
-    /* ----------------------------------------------------
+        /* Keyframes */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 8px var(--accent-cyan);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.25);
+                box-shadow: 0 0 16px var(--accent-cyan);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translate(-50%, 0);
+            }
+
+            40% {
+                transform: translate(-50%, -8px);
+            }
+
+            60% {
+                transform: translate(-50%, -4px);
+            }
+        }
+
+        @keyframes cellPulse {
+
+            0%,
+            100% {
+                opacity: 0.95;
+            }
+
+            50% {
+                opacity: 0.45;
+            }
+        }
+
+        /* ----------------------------------------------------
        12. Responsive Design Styles
        ---------------------------------------------------- */
-    @media (max-width: 1024px) {
-      .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: auto;
-      }
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
+            }
 
-      .card-about, .card-skills, .card-github, .card-project, .card-education, .card-interests {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
+            .card-about,
+            .card-skills,
+            .card-github,
+            .card-project,
+            .card-education,
+            .card-interests {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
 
-      .project-card-layout {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
+            .project-card-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
 
-      .project-visual {
-        height: 220px;
-        order: -1;
-      }
-    }
+            .project-visual {
+                height: 220px;
+                order: -1;
+            }
+        }
 
-    @media (max-width: 768px) {
-      header {
-        padding: 1rem;
-      }
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
 
-      .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: 5%;
-        right: 5%;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid var(--glass-border);
-        border-radius: 20px;
-        padding: 2rem;
-        flex-direction: column;
-        gap: 1.5rem;
-        transform: translateY(-150%);
-        opacity: 0;
-        transition: var(--transition-smooth);
-        pointer-events: none;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      }
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 5%;
+                right: 5%;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border: 1px solid var(--glass-border);
+                border-radius: 20px;
+                padding: 2rem;
+                flex-direction: column;
+                gap: 1.5rem;
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: var(--transition-smooth);
+                pointer-events: none;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
 
-      .nav-menu.mobile-open {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
+            .nav-menu.mobile-open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
 
-      .nav-toggle {
-        display: flex;
-      }
+            .nav-toggle {
+                display: flex;
+            }
 
-      .nav-toggle.open span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-      }
+            .nav-toggle.open span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
 
-      .nav-toggle.open span:nth-child(2) {
-        opacity: 0;
-      }
+            .nav-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
 
-      .nav-toggle.open span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-      }
+            .nav-toggle.open span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
 
-      .hero-title {
-        font-size: 2.75rem;
-      }
+            .hero-title {
+                font-size: 2.75rem;
+            }
 
-      .hero-subtitle {
-        font-size: 1.15rem;
-      }
+            .hero-subtitle {
+                font-size: 1.15rem;
+            }
 
-      .hero-cta-group {
-        flex-direction: column;
-        width: 100%;
-      }
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
 
-      .btn {
-        width: 100%;
-        justify-content: center;
-      }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
 
-      .courses-grid {
-        grid-template-columns: 1fr;
-      }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
 
-      .interests-list {
-        grid-template-columns: 1fr;
-      }
+            .interests-list {
+                grid-template-columns: 1fr;
+            }
 
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-      
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-    }
-  </style>
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Ambient background glow layers -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+    <!-- Ambient background glow layers -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
 
-  <!-- Interactive canvas background -->
-  <canvas id="particle-canvas"></canvas>
+    <!-- Interactive canvas background -->
+    <canvas id="particle-canvas"></canvas>
 
-  <!-- Sticky Navbar -->
-  <header>
-    <nav class="nav-container">
-      <a href="#home" class="logo">
-        Meghana G
-        <span class="logo-dot"></span>
-      </a>
+    <!-- Sticky Navbar -->
+    <header>
+        <nav class="nav-container">
+            <a href="#home" class="logo">
+                Meghana G
+                <span class="logo-dot"></span>
+            </a>
 
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#github" class="nav-link">GitHub</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#github" class="nav-link">GitHub</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
 
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <a href="#contact" class="nav-cta">Hire Me</a>
-        <div class="nav-toggle" id="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-badge reveal">First-Year B.Tech CSE Student</div>
-    <h1 class="hero-title reveal delay-1">Meghana G | Future Software Engineer</h1>
-    <p class="hero-subtitle reveal delay-2">
-      Building elegant solutions and mastering core computer science principles. Passionate about turning computational logic into high-impact software.
-    </p>
-    <div class="hero-cta-group reveal delay-3">
-      <a href="#projects" class="btn btn-primary">
-        View Work
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-      <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-    </div>
-
-    <div class="scroll-indicator">
-      Scroll Down
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-    </div>
-  </section>
-
-  <!-- Bento Grid Showcase Section -->
-  <main class="content-section" id="about">
-    <div class="section-header reveal">
-      <span class="section-tag">Portfolio Highlights</span>
-      <h2 class="section-title">Academic & Technical Spotlight</h2>
-    </div>
-
-    <div class="bento-grid">
-
-      <!-- Card 1: About Me -->
-      <div class="bento-card card-about reveal">
-        <div>
-          <div class="card-header-icon">
-            <span class="card-tag">Profile</span>
-            <div class="icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-          </div>
-          <h3 class="card-title">About Me</h3>
-          <p class="card-text about-bio">
-            Hello! I am a First-Year Computer Science student driven by deep curiosity in programming paradigms and hardware-software architectures. My focus lies in structural systems engineering, algorithms, and modular design.
-          </p>
-          <p class="card-text about-bio" style="margin-top: -1rem;">
-            I am currently sharpening my problem-solving capabilities, learning data structures, and applying them in Python and C to write performant software code.
-          </p>
-        </div>
-        <div class="about-highlights">
-          <div class="highlight-item">
-            <span class="highlight-num">9.5+</span>
-            <span class="highlight-label">Current GPA</span>
-          </div>
-          <div class="highlight-item">
-            <span class="highlight-num">10+</span>
-            <span class="highlight-label">Projects Built</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Tech Stack / Skills -->
-      <div class="bento-card card-skills reveal delay-1" id="skills">
-        <div>
-          <div class="card-header-icon">
-            <span class="card-tag">Tech Stack</span>
-            <div class="icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-            </div>
-          </div>
-          <h3 class="card-title">Skills & Tooling</h3>
-          <p class="card-text" style="margin-bottom: 1.5rem;">
-            Leveraging modern tools and languages to engineer cleaner codebases.
-          </p>
-        </div>
-        <div class="skills-grid">
-          <div>
-            <h4 class="skill-category-title">Languages</h4>
-            <div class="skills-pills">
-              <div class="skill-pill">
-                <!-- Python SVG -->
-                <svg class="skill-icon" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.75 14.25c0 .41-.34.75-.75.75s-.75-.34-.75-.75.34-.75.75-.75.75.34.75.75zm.03-3.41c-.02.2-.07.41-.15.61-.17.43-.51.78-.93.94-.3.11-.63.15-.95.09-.43-.07-.82-.33-1.04-.71-.22-.38-.26-.84-.1-1.25.17-.43.51-.78.93-.94.3-.11.63-.15.95-.09.68.12 1.18.72 1.29 1.35z"/>
-                </svg>
-                Python
-              </div>
-              <div class="skill-pill">
-                C Programming
-              </div>
-              <div class="skill-pill">
-                HTML5
-              </div>
-              <div class="skill-pill">
-                CSS3 / Flex / Grid
-              </div>
-              <div class="skill-pill">
-                JavaScript (ES6+)
-              </div>
-            </div>
-          </div>
-          <div>
-            <h4 class="skill-category-title">Tools & Frameworks</h4>
-            <div class="skills-pills">
-              <div class="skill-pill">
-                Git / GitHub
-              </div>
-              <div class="skill-pill">
-                VS Code
-              </div>
-              <div class="skill-pill">
-                Linux CLI
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: GitHub Spotlight -->
-      <div class="bento-card card-github reveal delay-2" id="github">
-        <div>
-          <div class="card-header-icon">
-            <span class="card-tag">GitHub Hub</span>
-            <div class="icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            </div>
-          </div>
-          
-          <div class="github-profile">
-            <div class="github-avatar">
-              <div class="github-avatar-inner">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              </div>
-            </div>
-            <div class="github-meta">
-              <span class="github-handle">meghanag1212</span>
-              <span class="github-badge">Active Contributor</span>
-            </div>
-          </div>
-
-          <!-- Activity Heatmap Simulation -->
-          <div class="github-grid-wrapper">
-            <div class="github-grid-title">
-              <span>Contribution Matrix</span>
-              <span>140+ Commits</span>
-            </div>
-            <div class="github-grid" id="github-cells">
-              <!-- Dynamically populated in JavaScript for random variation -->
-            </div>
-          </div>
-        </div>
-
-        <div class="card-footer-action">
-          <a href="https://github.com/meghanag1212" target="_blank" rel="noopener noreferrer" class="btn-github-link">
-            <span>View Profile</span>
-            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 4: Featured Project -->
-      <div class="bento-card card-project reveal delay-3" id="projects">
-        <div class="project-card-layout">
-          <div class="project-info">
-            <div>
-              <div class="card-header-icon" style="margin-bottom: 1rem;">
-                <span class="card-tag">Featured Project</span>
-                <div class="project-tags">
-                  <span class="project-tag">Python</span>
-                  <span class="project-tag">PyQt5</span>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="#contact" class="nav-cta">Hire Me</a>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-              </div>
-              <h3 class="card-title" style="margin-bottom: 0.5rem;">Nexus Algorithm Visualizer</h3>
-              <p class="card-text">
-                An interactive desktop utility graphing algorithmic workflows, visualising Sorting algorithms (QuickSort, MergeSort) and Pathfinding (Dijkstra, A*). Engineered with Python and Qt core threads to isolate visual loops from back-end logic.
-              </p>
-              
-              <div class="project-techs">
-                <div class="project-tech-item"><span></span> Thread Isolation</div>
-                <div class="project-tech-item"><span></span> Custom GUI Node Links</div>
-                <div class="project-tech-item"><span></span> Complexity Metrics</div>
-              </div>
             </div>
+        </nav>
+    </header>
 
-            <div class="project-actions">
-              <a href="https://github.com/meghanag1212" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">
-                Codebase
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Code editor preview -->
-          <div class="project-visual">
-            <div class="project-mock-window">
-              <div class="mock-window-header">
-                <div class="mock-dot red"></div>
-                <div class="mock-dot yellow"></div>
-                <div class="mock-dot green"></div>
-                <span style="font-size: 0.65rem; color: var(--text-muted); margin-left: 0.5rem; font-family: monospace;">visualizer.py</span>
-              </div>
-              <div class="mock-window-body">
-                <div class="mock-code-line"><span class="mock-line-num">1</span><span><span style="color: #ff79c6;">import</span> sys, time</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">2</span><span><span style="color: #ff79c6;">from</span> PyQt5.QtCore <span style="color: #ff79c6;">import</span> QThread</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">3</span><span></span></div>
-                <div class="mock-code-line"><span class="mock-line-num">4</span><span><span style="color: #ff79c6;">class</span> <span style="color: #50fa7b;">VisualThread</span>(QThread):</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">5</span><span>    <span style="color: #ff79c6;">def</span> <span style="color: #50fa7b;">__init__</span>(self, array):</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">6</span><span>        super().__init__()</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">7</span><span>        self.arr = array</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">8</span><span></span></div>
-                <div class="mock-code-line"><span class="mock-line-num">9</span><span>    <span style="color: #ff79c6;">def</span> <span style="color: #50fa7b;">bubble_sort</span>(self):</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">10</span><span>        n = len(self.arr)</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">11</span><span>        <span style="color: #ff79c6;">for</span> i <span style="color: #ff79c6;">in</span> range(n):</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">12</span><span>            <span style="color: #ff79c6;">for</span> j <span style="color: #ff79c6;">in</span> range(<span style="color: #bd93f9;">0</span>, n-i-<span style="color: #bd93f9;">1</span>):</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">13</span><span>                <span style="color: #ff79c6;">if</span> self.arr[j] > self.arr[j+<span style="color: #bd93f9;">1</span>]:</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">14</span><span>                    <span style="color: #ff79c6;">swap</span>(j, j+<span style="color: #bd93f9;">1</span>)</span></div>
-                <div class="mock-code-line"><span class="mock-line-num">15</span><span>                    self.msleep(<span style="color: #bd93f9;">10</span>)</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5: Core Academic Coursework -->
-      <div class="bento-card card-education reveal">
-        <div>
-          <div class="card-header-icon">
-            <span class="card-tag">Education</span>
-            <div class="icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
-            </div>
-          </div>
-          <h3 class="card-title">Core Coursework</h3>
-          <p class="card-text">
-            Strong foundation in computer science and mathematical fundamentals during first-year studies:
-          </p>
-          
-          <div class="courses-grid">
-            <div class="course-card">
-              <div class="course-code">CSE 101</div>
-              <div class="course-name">Problem Solving with C</div>
-            </div>
-            <div class="course-card">
-              <div class="course-code">MTH 102</div>
-              <div class="course-name">Calculus & Linear Algebra</div>
-            </div>
-            <div class="course-card">
-              <div class="course-code">CSE 103</div>
-              <div class="course-name">Digital Logic Design</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6: Interests / Extracurriculars -->
-      <div class="bento-card card-interests reveal delay-1">
-        <div>
-          <div class="card-header-icon">
-            <span class="card-tag">Interests</span>
-            <div class="icon-wrapper">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            </div>
-          </div>
-          <h3 class="card-title">Explorations</h3>
-          <p class="card-text">
-            Passionate areas of theoretical and practical computer science that I explore daily:
-          </p>
-          
-          <div class="interests-list">
-            <div class="interest-item">
-              <div class="interest-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              </div>
-              <span class="interest-label">Cybersecurity Basics</span>
-            </div>
-            <div class="interest-item">
-              <div class="interest-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              </div>
-              <span class="interest-label">Open Source Tech</span>
-            </div>
-            <div class="interest-item">
-              <div class="interest-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-              </div>
-              <span class="interest-label">Competitive Coding</span>
-            </div>
-            <div class="interest-item">
-              <div class="interest-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-              <span class="interest-label">Computer Graphics</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Contact & Footer -->
-  <footer id="contact">
-    <div class="footer-container">
-      <div class="footer-brand reveal">
-        <a href="#home" class="footer-logo">
-          Meghana G
-          <span class="logo-dot"></span>
-        </a>
-        <p class="footer-desc">
-          First-Year B.Tech Computer Science student preparing to push computational limits. Let's build something beautiful together.
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-badge reveal">First-Year B.Tech CSE Student</div>
+        <h1 class="hero-title reveal delay-1">Meghana G | Future Software Engineer</h1>
+        <p class="hero-subtitle reveal delay-2">
+            Building elegant solutions and mastering core computer science principles. Passionate about turning
+            computational logic into high-impact software.
         </p>
-      </div>
+        <div class="hero-cta-group reveal delay-3">
+            <a href="#projects" class="btn btn-primary">
+                View Work
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
 
-      <div class="footer-connect reveal delay-1">
-        <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted);">Reach Out</h4>
-        
-        <div class="email-container">
-          <button class="email-btn" id="email-copy-btn">
-            <span>meghana123@gmail.com</span>
-            <div class="email-copy-icon" id="copy-status-icon">
-              <!-- Copy Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <div class="scroll-indicator">
+            Scroll Down
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="7 13 12 18 17 13"></polyline>
+                <polyline points="7 6 12 11 17 6"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Bento Grid Showcase Section -->
+    <main class="content-section" id="about">
+        <div class="section-header reveal">
+            <span class="section-tag">Portfolio Highlights</span>
+            <h2 class="section-title">Academic & Technical Spotlight</h2>
+        </div>
+
+        <div class="bento-grid">
+
+            <!-- Card 1: About Me -->
+            <div class="bento-card card-about reveal">
+                <div>
+                    <div class="card-header-icon">
+                        <span class="card-tag">Profile</span>
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="card-title">About Me</h3>
+                    <p class="card-text about-bio">
+                        Hello! I am a First-Year Computer Science student driven by deep curiosity in programming
+                        paradigms and hardware-software architectures. My focus lies in structural systems engineering,
+                        algorithms, and modular design.
+                    </p>
+                    <p class="card-text about-bio" style="margin-top: -1rem;">
+                        I am currently sharpening my problem-solving capabilities, learning data structures, and
+                        applying them in Python and C to write performant software code.
+                    </p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-num">9.5+</span>
+                        <span class="highlight-label">Current GPA</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-num">10+</span>
+                        <span class="highlight-label">Projects Built</span>
+                    </div>
+                </div>
             </div>
-          </button>
+
+            <!-- Card 2: Tech Stack / Skills -->
+            <div class="bento-card card-skills reveal delay-1" id="skills">
+                <div>
+                    <div class="card-header-icon">
+                        <span class="card-tag">Tech Stack</span>
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Skills & Tooling</h3>
+                    <p class="card-text" style="margin-bottom: 1.5rem;">
+                        Leveraging modern tools and languages to engineer cleaner codebases.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div>
+                        <h4 class="skill-category-title">Languages</h4>
+                        <div class="skills-pills">
+                            <div class="skill-pill">
+                                <!-- Python SVG -->
+                                <svg class="skill-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.75 14.25c0 .41-.34.75-.75.75s-.75-.34-.75-.75.34-.75.75-.75.75.34.75.75zm.03-3.41c-.02.2-.07.41-.15.61-.17.43-.51.78-.93.94-.3.11-.63.15-.95.09-.43-.07-.82-.33-1.04-.71-.22-.38-.26-.84-.1-1.25.17-.43.51-.78.93-.94.3-.11.63-.15.95-.09.68.12 1.18.72 1.29 1.35z" />
+                                </svg>
+                                Python
+                            </div>
+                            <div class="skill-pill">
+                                C Programming
+                            </div>
+                            <div class="skill-pill">
+                                HTML5
+                            </div>
+                            <div class="skill-pill">
+                                CSS3 / Flex / Grid
+                            </div>
+                            <div class="skill-pill">
+                                JavaScript (ES6+)
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="skill-category-title">Tools & Frameworks</h4>
+                        <div class="skills-pills">
+                            <div class="skill-pill">
+                                Git / GitHub
+                            </div>
+                            <div class="skill-pill">
+                                VS Code
+                            </div>
+                            <div class="skill-pill">
+                                Linux CLI
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: GitHub Spotlight -->
+            <div class="bento-card card-github reveal delay-2" id="github">
+                <div>
+                    <div class="card-header-icon">
+                        <span class="card-tag">GitHub Hub</span>
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="github-profile">
+                        <div class="github-avatar">
+                            <div class="github-avatar-inner">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="github-meta">
+                            <span class="github-handle">meghanag1212</span>
+                            <span class="github-badge">Active Contributor</span>
+                        </div>
+                    </div>
+
+                    <!-- Activity Heatmap Simulation -->
+                    <div class="github-grid-wrapper">
+                        <div class="github-grid-title">
+                            <span>Contribution Matrix</span>
+                            <span>140+ Commits</span>
+                        </div>
+                        <div class="github-grid" id="github-cells">
+                            <!-- Dynamically populated in JavaScript for random variation -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer-action">
+                    <a href="https://github.com/meghanag1212" target="_blank" rel="noopener noreferrer"
+                        class="btn-github-link">
+                        <span>View Profile</span>
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4: Featured Project -->
+            <div class="bento-card card-project reveal delay-3" id="projects">
+                <div class="project-card-layout">
+                    <div class="project-info">
+                        <div>
+                            <div class="card-header-icon" style="margin-bottom: 1rem;">
+                                <span class="card-tag">Featured Project</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">PyQt5</span>
+                                </div>
+                            </div>
+                            <h3 class="card-title" style="margin-bottom: 0.5rem;">Nexus Algorithm Visualizer</h3>
+                            <p class="card-text">
+                                An interactive desktop utility graphing algorithmic workflows, visualising Sorting
+                                algorithms (QuickSort, MergeSort) and Pathfinding (Dijkstra, A*). Engineered with Python
+                                and Qt core threads to isolate visual loops from back-end logic.
+                            </p>
+
+                            <div class="project-techs">
+                                <div class="project-tech-item"><span></span> Thread Isolation</div>
+                                <div class="project-tech-item"><span></span> Custom GUI Node Links</div>
+                                <div class="project-tech-item"><span></span> Complexity Metrics</div>
+                            </div>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://github.com/meghanag1212" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">
+                                Codebase
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Code editor preview -->
+                    <div class="project-visual">
+                        <div class="project-mock-window">
+                            <div class="mock-window-header">
+                                <div class="mock-dot red"></div>
+                                <div class="mock-dot yellow"></div>
+                                <div class="mock-dot green"></div>
+                                <span
+                                    style="font-size: 0.65rem; color: var(--text-muted); margin-left: 0.5rem; font-family: monospace;">visualizer.py</span>
+                            </div>
+                            <div class="mock-window-body">
+                                <div class="mock-code-line"><span class="mock-line-num">1</span><span><span
+                                            style="color: #ff79c6;">import</span> sys, time</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">2</span><span><span
+                                            style="color: #ff79c6;">from</span> PyQt5.QtCore <span
+                                            style="color: #ff79c6;">import</span> QThread</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">3</span><span></span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">4</span><span><span
+                                            style="color: #ff79c6;">class</span> <span
+                                            style="color: #50fa7b;">VisualThread</span>(QThread):</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">5</span><span> <span
+                                            style="color: #ff79c6;">def</span> <span
+                                            style="color: #50fa7b;">__init__</span>(self, array):</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">6</span><span>
+                                        super().__init__()</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">7</span><span> self.arr =
+                                        array</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">8</span><span></span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">9</span><span> <span
+                                            style="color: #ff79c6;">def</span> <span
+                                            style="color: #50fa7b;">bubble_sort</span>(self):</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">10</span><span> n =
+                                        len(self.arr)</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">11</span><span> <span
+                                            style="color: #ff79c6;">for</span> i <span style="color: #ff79c6;">in</span>
+                                        range(n):</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">12</span><span> <span
+                                            style="color: #ff79c6;">for</span> j <span style="color: #ff79c6;">in</span>
+                                        range(<span style="color: #bd93f9;">0</span>, n-i-<span
+                                            style="color: #bd93f9;">1</span>):</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">13</span><span> <span
+                                            style="color: #ff79c6;">if</span> self.arr[j] > self.arr[j+<span
+                                            style="color: #bd93f9;">1</span>]:</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">14</span><span> <span
+                                            style="color: #ff79c6;">swap</span>(j, j+<span
+                                            style="color: #bd93f9;">1</span>)</span></div>
+                                <div class="mock-code-line"><span class="mock-line-num">15</span><span>
+                                        self.msleep(<span style="color: #bd93f9;">10</span>)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Core Academic Coursework -->
+            <div class="bento-card card-education reveal">
+                <div>
+                    <div class="card-header-icon">
+                        <span class="card-tag">Education</span>
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Core Coursework</h3>
+                    <p class="card-text">
+                        Strong foundation in computer science and mathematical fundamentals during first-year studies:
+                    </p>
+
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-code">CSE 101</div>
+                            <div class="course-name">Problem Solving with C</div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-code">MTH 102</div>
+                            <div class="course-name">Calculus & Linear Algebra</div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-code">CSE 103</div>
+                            <div class="course-name">Digital Logic Design</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Interests / Extracurriculars -->
+            <div class="bento-card card-interests reveal delay-1">
+                <div>
+                    <div class="card-header-icon">
+                        <span class="card-tag">Interests</span>
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                </polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Explorations</h3>
+                    <p class="card-text">
+                        Passionate areas of theoretical and practical computer science that I explore daily:
+                    </p>
+
+                    <div class="interests-list">
+                        <div class="interest-item">
+                            <div class="interest-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <span class="interest-label">Cybersecurity Basics</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="interest-label">Open Source Tech</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
+                            <span class="interest-label">Competitive Coding</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <span class="interest-label">Computer Graphics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Contact & Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-brand reveal">
+                <a href="#home" class="footer-logo">
+                    Meghana G
+                    <span class="logo-dot"></span>
+                </a>
+                <p class="footer-desc">
+                    First-Year B.Tech Computer Science student preparing to push computational limits. Let's build
+                    something beautiful together.
+                </p>
+            </div>
+
+            <div class="footer-connect reveal delay-1">
+                <h4
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted);">
+                    Reach Out</h4>
+
+                <div class="email-container">
+                    <button class="email-btn" id="email-copy-btn">
+                        <span>meghana123@gmail.com</span>
+                        <div class="email-copy-icon" id="copy-status-icon">
+                            <!-- Copy Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-copy">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/meghanag1212" target="_blank" rel="noopener noreferrer"
+                        class="social-btn" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                        </svg>
+                    </a>
+                    <!-- LinkedIn Icon Mock -->
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn"
+                        aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="social-links">
-          <a href="https://github.com/meghanag1212" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
-            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-          </a>
-          <!-- LinkedIn Icon Mock -->
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          </a>
+        <div class="footer-bottom">
+            <p>© 2026 Meghana G. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#home" class="footer-bottom-link">Back to Top</a>
+            </div>
         </div>
-      </div>
+    </footer>
+
+    <!-- Copy Clipboard Success Toast -->
+    <div class="toast" id="copy-toast">
+        <span class="toast-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </span>
+        <span>Email copied to clipboard!</span>
     </div>
 
-    <div class="footer-bottom">
-      <p>© 2026 Meghana G. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="#home" class="footer-bottom-link">Back to Top</a>
-      </div>
-    </div>
-  </footer>
+    <!-- JavaScript Modules -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-  <!-- Copy Clipboard Success Toast -->
-  <div class="toast" id="copy-toast">
-    <span class="toast-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    </span>
-    <span>Email copied to clipboard!</span>
-  </div>
+            /* ----------------------------------------------------
+               1. Particle Canvas Network Background
+               ---------------------------------------------------- */
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
 
-  <!-- JavaScript Modules -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+            let particlesArray = [];
+            const density = 60; // Total count of floating nodes
+            const maxDistance = 120; // Connecting bridge length
 
-      /* ----------------------------------------------------
-         1. Particle Canvas Network Background
-         ---------------------------------------------------- */
-      const canvas = document.getElementById('particle-canvas');
-      const ctx = canvas.getContext('2d');
-
-      let particlesArray = [];
-      const density = 60; // Total count of floating nodes
-      const maxDistance = 120; // Connecting bridge length
-
-      // Set explicit viewport sizes
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      class Particle {
-        constructor() {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height;
-          this.vx = (Math.random() - 0.5) * 0.4;
-          this.vy = (Math.random() - 0.5) * 0.4;
-          this.radius = Math.random() * 1.5 + 1;
-        }
-
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-          ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
-          ctx.fill();
-        }
-
-        update() {
-          this.x += this.vx;
-          this.y += this.vy;
-
-          // Wrap edges
-          if (this.x < 0) this.x = canvas.width;
-          if (this.x > canvas.width) this.x = 0;
-          if (this.y < 0) this.y = canvas.height;
-          if (this.y > canvas.height) this.y = 0;
-        }
-      }
-
-      function initParticles() {
-        particlesArray = [];
-        for (let i = 0; i < density; i++) {
-          particlesArray.push(new Particle());
-        }
-      }
-
-      function connectParticles() {
-        for (let i = 0; i < particlesArray.length; i++) {
-          for (let j = i + 1; j < particlesArray.length; j++) {
-            const dx = particlesArray[i].x - particlesArray[j].x;
-            const dy = particlesArray[i].y - particlesArray[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < maxDistance) {
-              const alpha = (1 - (dist / maxDistance)) * 0.08;
-              ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-              ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-              ctx.stroke();
+            // Set explicit viewport sizes
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
-          }
-        }
-      }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
 
-      function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particlesArray.forEach(p => {
-          p.update();
-          p.draw();
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.4;
+                    this.vy = (Math.random() - 0.5) * 0.4;
+                    this.radius = Math.random() * 1.5 + 1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                    ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+                    ctx.fill();
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // Wrap edges
+                    if (this.x < 0) this.x = canvas.width;
+                    if (this.x > canvas.width) this.x = 0;
+                    if (this.y < 0) this.y = canvas.height;
+                    if (this.y > canvas.height) this.y = 0;
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                for (let i = 0; i < density; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+
+            function connectParticles() {
+                for (let i = 0; i < particlesArray.length; i++) {
+                    for (let j = i + 1; j < particlesArray.length; j++) {
+                        const dx = particlesArray[i].x - particlesArray[j].x;
+                        const dy = particlesArray[i].y - particlesArray[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < maxDistance) {
+                            const alpha = (1 - (dist / maxDistance)) * 0.08;
+                            ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                            ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particlesArray.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                connectParticles();
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+
+
+            /* ----------------------------------------------------
+               2. Bento Cards Glowing Cursor Tracking
+               ---------------------------------------------------- */
+            const cards = document.querySelectorAll('.bento-card');
+
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+
+
+            /* ----------------------------------------------------
+               3. GitHub Grid Simulator (Randomized Activity Levels)
+               ---------------------------------------------------- */
+            const gridContainer = document.getElementById('github-cells');
+            if (gridContainer) {
+                // Create 20 columns * 7 rows = 140 elements
+                const cellCount = 140;
+                for (let i = 0; i < cellCount; i++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('github-cell');
+
+                    // Random contribution level
+                    const rand = Math.random();
+                    if (rand > 0.85) {
+                        cell.classList.add('lvl-4');
+                    } else if (rand > 0.7) {
+                        cell.classList.add('lvl-3');
+                    } else if (rand > 0.55) {
+                        cell.classList.add('lvl-2');
+                    } else if (rand > 0.35) {
+                        cell.classList.add('lvl-1');
+                    }
+
+                    // Micro-animation stagger delays
+                    cell.style.animationDelay = `${(i % 17) * 0.15}s`;
+                    gridContainer.appendChild(cell);
+                }
+            }
+
+
+            /* ----------------------------------------------------
+               4. Nav Scroll Highlighting & Mobile Toggle
+               ---------------------------------------------------- */
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section, main, footer');
+
+            window.addEventListener('scroll', () => {
+                let currentSectionId = 'home';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 250)) {
+                        currentSectionId = section.getAttribute('id') || currentSectionId;
+                    }
+                });
+
+                // Special check to highlight Contact at page bottom
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                    currentSectionId = 'contact';
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Mobile Hamburg menu toggle
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('open');
+                navMenu.classList.toggle('mobile-open');
+            });
+
+            // Close menu when clicking nav link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('open');
+                    navMenu.classList.remove('mobile-open');
+                });
+            });
+
+
+            /* ----------------------------------------------------
+               5. Scroll Reveal Animation using IntersectionObserver
+               ---------------------------------------------------- */
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Once revealed, no need to track it anymore
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+
+            /* ----------------------------------------------------
+               6. Email Address Copy Utility & Visual Toast
+               ---------------------------------------------------- */
+            const copyBtn = document.getElementById('email-copy-btn');
+            const toast = document.getElementById('copy-toast');
+            const copyIcon = document.getElementById('copy-status-icon');
+
+            // Copy SVG
+            const originalIconMarkup = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+            // Checkmark SVG
+            const successIconMarkup = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+
+            copyBtn.addEventListener('click', () => {
+                const emailAddress = "meghana123@gmail.com";
+
+                navigator.clipboard.writeText(emailAddress).then(() => {
+                    // Change copy button icon to success state
+                    copyIcon.innerHTML = successIconMarkup;
+                    copyIcon.style.color = '#10b981'; // Green accent for success
+
+                    // Show Toast notification
+                    toast.classList.add('show');
+
+                    // Reset back to original state after 2.5 seconds
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                        copyIcon.innerHTML = originalIconMarkup;
+                        copyIcon.style.color = '';
+                    }, 2500);
+                }).catch(err => {
+                    console.error("Clipboard write failure: ", err);
+                });
+            });
+
         });
-        connectParticles();
-        requestAnimationFrame(animateParticles);
-      }
-
-      initParticles();
-      animateParticles();
-
-
-      /* ----------------------------------------------------
-         2. Bento Cards Glowing Cursor Tracking
-         ---------------------------------------------------- */
-      const cards = document.querySelectorAll('.bento-card');
-      
-      cards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
-        });
-      });
-
-
-      /* ----------------------------------------------------
-         3. GitHub Grid Simulator (Randomized Activity Levels)
-         ---------------------------------------------------- */
-      const gridContainer = document.getElementById('github-cells');
-      if (gridContainer) {
-        // Create 20 columns * 7 rows = 140 elements
-        const cellCount = 140;
-        for (let i = 0; i < cellCount; i++) {
-          const cell = document.createElement('div');
-          cell.classList.add('github-cell');
-          
-          // Random contribution level
-          const rand = Math.random();
-          if (rand > 0.85) {
-            cell.classList.add('lvl-4');
-          } else if (rand > 0.7) {
-            cell.classList.add('lvl-3');
-          } else if (rand > 0.55) {
-            cell.classList.add('lvl-2');
-          } else if (rand > 0.35) {
-            cell.classList.add('lvl-1');
-          }
-          
-          // Micro-animation stagger delays
-          cell.style.animationDelay = `${(i % 17) * 0.15}s`;
-          gridContainer.appendChild(cell);
-        }
-      }
-
-
-      /* ----------------------------------------------------
-         4. Nav Scroll Highlighting & Mobile Toggle
-         ---------------------------------------------------- */
-      const navLinks = document.querySelectorAll('.nav-link');
-      const sections = document.querySelectorAll('section, main, footer');
-
-      window.addEventListener('scroll', () => {
-        let currentSectionId = 'home';
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (window.scrollY >= (sectionTop - 250)) {
-            currentSectionId = section.getAttribute('id') || currentSectionId;
-          }
-        });
-
-        // Special check to highlight Contact at page bottom
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-          currentSectionId = 'contact';
-        }
-
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${currentSectionId}`) {
-            link.classList.add('active');
-          }
-        });
-      });
-
-      // Mobile Hamburg menu toggle
-      const navToggle = document.getElementById('nav-toggle');
-      const navMenu = document.getElementById('nav-menu');
-
-      navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('open');
-        navMenu.classList.toggle('mobile-open');
-      });
-
-      // Close menu when clicking nav link
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          navToggle.classList.remove('open');
-          navMenu.classList.remove('mobile-open');
-        });
-      });
-
-
-      /* ----------------------------------------------------
-         5. Scroll Reveal Animation using IntersectionObserver
-         ---------------------------------------------------- */
-      const revealElements = document.querySelectorAll('.reveal');
-      
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            // Once revealed, no need to track it anymore
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      revealElements.forEach(el => revealObserver.observe(el));
-
-
-      /* ----------------------------------------------------
-         6. Email Address Copy Utility & Visual Toast
-         ---------------------------------------------------- */
-      const copyBtn = document.getElementById('email-copy-btn');
-      const toast = document.getElementById('copy-toast');
-      const copyIcon = document.getElementById('copy-status-icon');
-
-      // Copy SVG
-      const originalIconMarkup = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
-      // Checkmark SVG
-      const successIconMarkup = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-
-      copyBtn.addEventListener('click', () => {
-        const emailAddress = "meghana123@gmail.com";
-        
-        navigator.clipboard.writeText(emailAddress).then(() => {
-          // Change copy button icon to success state
-          copyIcon.innerHTML = successIconMarkup;
-          copyIcon.style.color = '#10b981'; // Green accent for success
-
-          // Show Toast notification
-          toast.classList.add('show');
-
-          // Reset back to original state after 2.5 seconds
-          setTimeout(() => {
-            toast.classList.remove('show');
-            copyIcon.innerHTML = originalIconMarkup;
-            copyIcon.style.color = '';
-          }, 2500);
-        }).catch(err => {
-          console.error("Clipboard write failure: ", err);
-        });
-      });
-
-    });
-  </script>
+    </script>
 </body>
+
 </html>
